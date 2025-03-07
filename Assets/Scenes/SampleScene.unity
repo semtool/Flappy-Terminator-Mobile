@@ -420,6 +420,7 @@ Transform:
   - {fileID: 559114702}
   - {fileID: 112636790}
   - {fileID: 980653279}
+  - {fileID: 1869005562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &327767927
@@ -1912,6 +1913,7 @@ GameObject:
   - component: {fileID: 1102351301}
   - component: {fileID: 1102351302}
   - component: {fileID: 1102351303}
+  - component: {fileID: 1102351304}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2126,6 +2128,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11637ff356a7e8c4a935d7126f301c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1102351304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102351290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af9582290d73d4243a9403ba6476ecbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1207714603
@@ -3578,7 +3592,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 100.92
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -3606,7 +3620,7 @@ RectTransform:
   - {fileID: 2141806253}
   - {fileID: 1922103420}
   - {fileID: 2120226096}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 214192232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3684,7 +3698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.2, y: 227.4}
+  m_AnchoredPosition: {x: -16.2, y: 340}
   m_SizeDelta: {x: 35, y: 16.559998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1922103421
@@ -4014,7 +4028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.3, y: 225}
+  m_AnchoredPosition: {x: 45.3, y: 340.1}
   m_SizeDelta: {x: 58.57, y: 15.559998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2141806255
@@ -4122,5 +4136,4 @@ SceneRoots:
   - {fileID: 1207714605}
   - {fileID: 617213104}
   - {fileID: 214192232}
-  - {fileID: 1869005562}
   - {fileID: 630743771}

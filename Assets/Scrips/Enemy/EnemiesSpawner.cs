@@ -26,7 +26,9 @@ public class EnemiesSpawner : MonoBehaviour
     private void OnEnable()
     {
         _inputTrigger.CordinatesHasGot += LaunchEnemies;
+
         _outputTrigger.IsTouched += PootEnemyToPoolFromBarrier;
+
         _enemiesPool.ObjectIsInPool += UnsubscribeFromEvent;
     }
 
@@ -60,9 +62,9 @@ public class EnemiesSpawner : MonoBehaviour
 
         SetStartCoordinates(enemy, vector);
 
-        var shootingVector = enemy.transform.position;
+        enemy.Mover.Fly();
 
-        enemy.Shoot(_enemyMissileSpawner.LaunchMissiles(shootingVector));
+        enemy.Shoot(_enemyMissileSpawner.LaunchMissiles(enemy));
 
         enemy.SelfDetector.IsTouched += PootEnemyToPoolFromMissile;
     }
@@ -112,7 +114,9 @@ public class EnemiesSpawner : MonoBehaviour
     private void OnDisable()
     {
         _inputTrigger.CordinatesHasGot -= LaunchEnemies;
+
         _outputTrigger.IsTouched -= _enemiesPool.PutObjectToPool;
+
         _enemiesPool.ObjectIsInPool -= UnsubscribeFromEvent;
     }
 }

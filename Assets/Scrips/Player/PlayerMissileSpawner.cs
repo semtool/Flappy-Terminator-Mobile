@@ -17,7 +17,9 @@ public class PlayerMissileSpawner : MonoBehaviour
     private void OnEnable()
     {
         _inputReader.ShotWasFired += Launch;
+
         _tauchDetector.IsTouched += _missilesPool.PutObjectToPool;
+
         _missilesPool.ObjectIsInPool += UnsubscribeFromEvent;
     }
 
@@ -47,7 +49,9 @@ public class PlayerMissileSpawner : MonoBehaviour
     private void OnDisable()
     {
         _inputReader.ShotWasFired -= Launch;
+
         _tauchDetector.IsTouched -= _missilesPool.PutObjectToPool;
+
         _missilesPool.ObjectIsInPool -= UnsubscribeFromEvent;
     }
 }

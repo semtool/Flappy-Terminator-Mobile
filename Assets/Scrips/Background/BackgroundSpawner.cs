@@ -10,6 +10,7 @@ public class BackgroundSpawner : MonoBehaviour
     private void OnEnable()
     {
         _firstSlide.IsTouched += MoveSecondSlide;
+
         _secondSlide.IsTouched += MoveFirstSlide;
     }
 
@@ -26,6 +27,7 @@ public class BackgroundSpawner : MonoBehaviour
     private void OnDisable()
     {
         _firstSlide.IsTouched -= MoveSecondSlide;
+
         _secondSlide.IsTouched -= MoveFirstSlide;
     }
 }

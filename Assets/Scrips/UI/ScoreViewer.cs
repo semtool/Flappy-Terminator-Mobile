@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class Scorerer : MonoBehaviour
+public class ScoreViewer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private EnemiesSpawner _spawner;

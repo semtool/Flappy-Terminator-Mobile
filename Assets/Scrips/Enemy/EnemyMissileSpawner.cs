@@ -7,7 +7,7 @@ public class EnemyMissileSpawner : MonoBehaviour
     [SerializeField] private EnemyMissilePool _enemyMissilepool;
 
     private WaitForSeconds _wait;
-    private int _launchInterval = 1;
+    private float _launchInterval = 1f;
 
     private void Awake()
     {
@@ -17,20 +17,23 @@ public class EnemyMissileSpawner : MonoBehaviour
     private void OnEnable()
     {
         _detector.IsTouched += _enemyMissilepool.PutObjectToPool;
+
         _enemyMissilepool.ObjectIsInPool += UnsubscribeFromEvent;
     }
 
-    public IEnumerator LaunchMissiles(Vector2 vector)
+    public IEnumerator LaunchMissiles(Enemy enemy)
     {
         while (true)
         {
-            yield return _wait;
+            var spawnPosition = enemy.transform.position;
 
-            CreateMissile(vector);
+            CreateMissile(spawnPosition);
+
+            yield return _wait;
         }
     }
 
-    private void CreateMissile(Vector2 vector)
+    public void CreateMissile(Vector2 vector)
     {
         EnemyMissile missile = _enemyMissilepool.GetObjectFromPool();
 

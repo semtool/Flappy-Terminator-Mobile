@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class InformSistem : MonoBehaviour
+public class InformSystem : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private Player _player;
@@ -30,14 +30,18 @@ public class InformSistem : MonoBehaviour
     private void RestartButtonTurnOn()
     {
         _button.gameObject.SetActive(true);
+
         _informer.gameObject.SetActive(true);
+
         Time.timeScale = 0;
     }
 
     private void RestartButtonTurnOff()
     {
         _button.gameObject.SetActive(false);
+
         _informer.gameObject.SetActive(false);
+
         Time.timeScale = 1;
     }
 
