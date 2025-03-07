@@ -5,9 +5,9 @@ public class EnemyMissileSpawner : MonoBehaviour
 {
     [SerializeField] private TouchDetector _detector;
     [SerializeField] private EnemyMissilePool _enemyMissilepool;
+    [SerializeField] private float _launchInterval;
 
     private WaitForSeconds _wait;
-    private float _launchInterval = 1f;
 
     private void Awake()
     {
