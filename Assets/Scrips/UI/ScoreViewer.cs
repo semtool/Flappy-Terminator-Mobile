@@ -5,12 +5,13 @@ public class ScoreViewer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private EnemiesSpawner _spawner;
+    [SerializeField] private PlayerMissileSpawner _playerMissileSpawner; 
 
     private int _fragsCounter = 0;
 
     private void OnEnable()
     {
-        _spawner.EnemyIsDestroyed += ShowScore;
+        _playerMissileSpawner.EnemyIsDestroyed += ShowScore;
     }
 
     private void ShowScore()
@@ -18,5 +19,10 @@ public class ScoreViewer : MonoBehaviour
         _fragsCounter++;
 
         _text.text = _fragsCounter.ToString();
+    }
+
+    private void OnDisable()
+    {
+        _playerMissileSpawner.EnemyIsDestroyed -= ShowScore;
     }
 }

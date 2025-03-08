@@ -1,13 +1,17 @@
 using UnityEngine;
+using System;
 
 public class PlayerMissileSpawner : MonoBehaviour
 {
+    [SerializeField] private EnemiesSpawner _enemiesSpawner;
     [SerializeField] private TouchDetector _tauchDetector;
     [SerializeField] private Player _player;
     [SerializeField] private Launcher _startPoint;
     [SerializeField] private PlayerMissilePool _missilesPool;
 
     private InputReader _inputReader;
+
+    public event Action EnemyIsDestroyed;
 
     private void Awake()
     {
@@ -32,6 +36,15 @@ public class PlayerMissileSpawner : MonoBehaviour
         missile.Mover.Fly();
 
         missile.Detector.IsTouched += _missilesPool.PutObjectToPool;
+
+        missile.Detector.CharacterIsTouched += SendEnemyToPool;
+    }
+
+    private void SendEnemyToPool(Unit unit)
+    {
+        _enemiesSpawner.PootEnemyToPool(unit);
+
+        EnemyIsDestroyed?.Invoke();
     }
 
     private void SetStartDirection(PlayerMissile missile)
@@ -44,6 +57,8 @@ public class PlayerMissileSpawner : MonoBehaviour
     private void UnsubscribeFromEvent(PlayerMissile missile)
     {
         missile.Detector.IsTouched -= _missilesPool.PutObjectToPool;
+
+        missile.Detector.CharacterIsTouched -= SendEnemyToPool;
     }
 
     private void OnDisable()

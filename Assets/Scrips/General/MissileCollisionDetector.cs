@@ -4,27 +4,35 @@ using UnityEngine;
 public class MissileCollisionDetector : MonoBehaviour
 {
     public event Action<Unit> IsTouched;
+    public event Action<Unit> CharacterIsTouched;
 
-     private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        if (collision.gameObject.TryGetComponent(out Unit character))
         {
-            if (gameObject.TryGetComponent(out Unit unit))
+            if (character is Enemy)
             {
-                if (unit is PlayerMissile)
+                CharacterIsTouched?.Invoke(character);
+                
+                if (gameObject.TryGetComponent(out Unit unit))
                 {
-                    IsTouched?.Invoke(unit);
+                    if (unit is PlayerMissile)
+                    {
+                        IsTouched?.Invoke(unit);
+                    }
                 }
             }
-        }
 
-        if (collision.gameObject.TryGetComponent(out Player player))
-        {
-            if (gameObject.TryGetComponent(out Unit unit))
+            if (character is Player player)
             {
-                if (unit is EnemyMissile)
+                if (gameObject.TryGetComponent(out Unit unit))
                 {
-                    IsTouched?.Invoke(unit);
+                    if (unit is EnemyMissile)
+                    {
+                        player.Disappear();
+
+                        IsTouched?.Invoke(unit);
+                    }
                 }
             }
         }

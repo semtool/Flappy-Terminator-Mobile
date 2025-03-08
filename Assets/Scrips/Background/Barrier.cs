@@ -6,9 +6,7 @@ public class Barrier : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Player player))
         {
-            player.Rotator.SetNormalPosition();
-
-            player.Jumper.RemoveInertia();
+            player.Reset();
         }
     }
 }

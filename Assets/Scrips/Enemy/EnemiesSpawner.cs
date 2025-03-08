@@ -21,15 +21,19 @@ public class EnemiesSpawner : MonoBehaviour
     private int _indexOfSocondEnemy = 1;
 
     public event Action<Vector2> CoordinatesIsGot;
-    public event Action EnemyIsDestroyed;
-
+    
     private void OnEnable()
     {
         _inputTrigger.CordinatesHasGot += LaunchEnemies;
 
-        _outputTrigger.IsTouched += PootEnemyToPoolFromBarrier;
+        _outputTrigger.IsTouched += PootEnemyToPool;
 
         _enemiesPool.ObjectIsInPool += UnsubscribeFromEvent;
+    }
+
+    public void PootEnemyToPool(Unit unit)
+    {
+        _enemiesPool.PutObjectToPool(unit);
     }
 
     private void LaunchEnemies(Vector2 vector)
@@ -65,8 +69,6 @@ public class EnemiesSpawner : MonoBehaviour
         enemy.Mover.Fly();
 
         enemy.Shoot(_enemyMissileSpawner.LaunchMissiles(enemy));
-
-        enemy.SelfDetector.IsTouched += PootEnemyToPoolFromMissile;
     }
 
     private void SetStartCoordinates(Enemy enemy, Vector2 vector)
@@ -94,28 +96,14 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void UnsubscribeFromEvent(Enemy enemy)
     {
-        enemy.SelfDetector.IsTouched -= PootEnemyToPoolFromMissile;
-
         enemy.StopShoot();
-    }
-
-    private void PootEnemyToPoolFromBarrier(Unit unit)
-    {
-        _enemiesPool.PutObjectToPool(unit);
-    }
-
-    private void PootEnemyToPoolFromMissile(Unit unit)
-    {
-        _enemiesPool.PutObjectToPool(unit);
-
-        EnemyIsDestroyed?.Invoke();
     }
 
     private void OnDisable()
     {
         _inputTrigger.CordinatesHasGot -= LaunchEnemies;
 
-        _outputTrigger.IsTouched -= _enemiesPool.PutObjectToPool;
+        _outputTrigger.IsTouched -= PootEnemyToPool;
 
         _enemiesPool.ObjectIsInPool -= UnsubscribeFromEvent;
     }

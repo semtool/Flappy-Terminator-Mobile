@@ -24,4 +24,11 @@ public class Player : Unit
 
         IsDestroyed?.Invoke();
     }
+
+    public void Reset()
+    {
+        Jumper.RemoveInertia();
+
+        Rotator.SetNormalPosition();
+    }
 }
