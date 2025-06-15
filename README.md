@@ -11,4 +11,6 @@
 ##  Технологии
 - Unity 2022.3.32f1 (2D Physics)
 - C# ООП MVP
+- ObjectPool
+- Generics
 - Unity UI System
