@@ -1,6 +1,6 @@
 # 🐦 Flappy Bird Clone | Unity 2D
 
-[![Unity Version](https://img.shields.io/badge/Unity-2021.3+-black?logo=unity)](https://unity.com)
+[![Unity Version](https://img.shields.io/badge/Unity-2022.3.32f1+-black?logo=unity)](https://unity.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Build Status](https://img.shields.io/badge/Build-WebGL%20|%20Android-blue)]()
 
