@@ -14,4 +14,5 @@
 - Unity 2022.3.32f1 (2D Physics)
 - C# с использованием ООП
 - ObjectPool
+- Generics
 - Unity UI System
